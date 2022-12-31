@@ -1,44 +1,44 @@
 import { Component } from "react";
 
 class Carousel extends Component {
-    state = {
-        active: 0
-    }
+  state = {
+    active: 0,
+  };
 
-    static defaultProps = {
-        images: ["htt://pet-images.dev-apis.com/pets/none.jpg"]
-    }
+  static defaultProps = {
+    images: ["htt://pet-images.dev-apis.com/pets/none.jpg"],
+  };
 
-    handleIndexClick = (event) => {
-        this.setState({
-            active: +event.target.dataset.index
-        })
-    }
+  handleIndexClick = (event) => {
+    this.setState({
+      active: +event.target.dataset.index,
+    });
+  };
 
-    render () {
-        const { active } = this.state;
-        const { images } = this.props;
+  render() {
+    const { active } = this.state;
+    const { images } = this.props;
 
-        return(
-            <div className='carousel'>
-                <img src={images[active]} alt="animal hero"/>
-                <div className="carousel-smaller">
-                    {images.map((photo, index)=>(
-                        //eslint-disable-next-line
-                        <img
-                            onClick={this.handleIndexClick}
-                            data-index={index}
-                            key={photo}
-                            src={photo}
-                            className={index === active ? "active" : ""}
-                            alt="animal thumbnail"
-                        />)
-                    )}
-                </div>
-
-            </div>
-        );
-    }
+    return (
+      <div className="carousel">
+        <img data-testid="hero" src={images[active]} alt="animal hero" />
+        <div className="carousel-smaller">
+          {images.map((photo, index) => (
+            //eslint-disable-next-line
+            <img
+              data-testid={`thumbnail${index}`}
+              onClick={this.handleIndexClick}
+              data-index={index}
+              key={photo}
+              src={photo}
+              className={index === active ? "active" : ""}
+              alt="animal thumbnail"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Carousel
+export default Carousel;

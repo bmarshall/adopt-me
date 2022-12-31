@@ -3,4 +3,5 @@ dist/
 .env
 .DS_Store
 coverage/
-.vscode/    
+.vscode/
+src/__tests__/__snapshots__/Results.test.jsx.snap
